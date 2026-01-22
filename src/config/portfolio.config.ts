@@ -42,7 +42,7 @@ export const portfolioConfig = {
     { label: "About", path: "/about", icon: "person" },
     { label: "Projects", path: "/projects", icon: "work" },
     { label: "Skills", path: "/skills", icon: "code" },
-    { label: "Contact", path: "/contact", icon: "email" },
+    // { label: "Contact", path: "/contact", icon: "email" },
   ],
 
   // Hero Section

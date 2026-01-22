@@ -108,7 +108,7 @@ function Hero(): ReactElement {
           >
             {hero.ctaText}
           </Button>
-          <Button
+          {/* <Button
             variant="outlined"
             size="large"
             sx={{
@@ -126,12 +126,12 @@ function Hero(): ReactElement {
             }}
           >
             View My Work
-          </Button>
+          </Button> */}
         </Box>
       </Box>
 
       {/* Scroll Indicator */}
-      <Box
+      {/* <Box
         sx={{
           position: "absolute",
           bottom: SPACING["2xl"],
@@ -163,7 +163,7 @@ function Hero(): ReactElement {
             },
           }}
         />
-      </Box>
+      </Box> */}
     </Box>
   );
 }
