@@ -17,17 +17,16 @@ function App(): ReactElement {
   return (
     <ThemeProvider theme={theme}>
       {globalStyles}
-      <Router>
+      <Router basename="/my-portfolio">
         <Box sx={{
           display: "flex",
           flexDirection: "column",
           width: "100%",
-          height: "100vh",
+          minHeight: "100vh",
         }}>
           <Navbar />
           <Box component="main" sx={{
             flex: 1,
-            overflow: "auto",
             width: "100%",
           }}>
             <Routes>

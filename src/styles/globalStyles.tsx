@@ -25,7 +25,6 @@ const globalStyles = (
         backgroundColor: COLORS.background.primary,
         color: COLORS.neutral.white,
         fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
-        overflow: "hidden",
       },
 
       "#root": {
