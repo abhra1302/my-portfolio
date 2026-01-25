@@ -21,17 +21,17 @@ export const portfolioConfig = {
   social: [
     {
       name: "GitHub",
-      url: "https://github.com",
+      url: "https://github.com/abhra1302",
       icon: "github",
     },
     {
       name: "LinkedIn",
-      url: "https://linkedin.com",
+      url: "https://www.linkedin.com/in/abhra-roy-979209193/",
       icon: "linkedin",
     },
     {
       name: "Twitter",
-      url: "https://twitter.com",
+      url: "https://x.com/Abhra1302",
       icon: "twitter",
     },
   ],
@@ -138,23 +138,22 @@ export const portfolioConfig = {
         "Material UI",
         "Tailwind CSS",
         "Redux",
-        "Next.js",
       ],
     },
     {
       category: "Backend",
       items: [
-        "Node.js",
-        "Express",
-        "NestJS",
+        "Java",
         "Spring Boot",
-        "Python",
-        "MongoDB",
+        "TypeScript",
+        "JavaScript",
+        "Node.js",
+        "NestJS",
       ],
     },
     {
       category: "Tools & Platforms",
-      items: ["Git", "Docker", "CI/CD", "AWS", "Firebase", "PostgreSQL"],
+      items: ["Git", "Docker", "CI/CD", "AWS", "PostgreSQL"],
     },
     {
       category: "Soft Skills",

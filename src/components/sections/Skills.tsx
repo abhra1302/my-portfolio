@@ -3,7 +3,7 @@ import { Box, Typography } from "@mui/material";
 import type { ReactElement } from "react";
 import { COLORS, SPACING, SHADOWS, TRANSITIONS } from "../../constants/theme.constants";
 
-const skills = ["JavaScript", "React", "TypeScript", "Node.js", "CSS", "HTML"];
+const skills = ["Java", "Spring Boot", "JavaScript", "TypeScript", "Node.js", "NestJS", "React", "Docker", "Kubernetes", "AWS"];
 
 const Skills = (): ReactElement => {
   return (

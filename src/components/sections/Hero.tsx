@@ -6,7 +6,7 @@ import { COLORS, ANIMATIONS, SPACING, SHADOWS, TRANSITIONS } from "../../constan
 
 function Hero(): ReactElement {
   const navigate = useNavigate();
-  const { hero } = portfolioConfig;
+  const { hero, footer } = portfolioConfig;
 
   return (
     <Box
@@ -108,62 +108,44 @@ function Hero(): ReactElement {
           >
             {hero.ctaText}
           </Button>
-          {/* <Button
-            variant="outlined"
-            size="large"
-            sx={{
-              px: SPACING["2xl"],
-              py: SPACING.lg,
-              fontSize: "1.1rem",
-              borderColor: COLORS.primary.main,
-              color: COLORS.primary.main,
-              transition: `all ${TRANSITIONS.base}`,
-              "&:hover": {
-                borderColor: COLORS.primary.light,
-                backgroundColor: `${COLORS.primary.main}15`,
-                transform: "translateY(-4px)",
-              },
-            }}
-          >
-            View My Work
-          </Button> */}
         </Box>
       </Box>
 
-      {/* Scroll Indicator */}
-      {/* <Box
+      {/* Footer */}
+      <Box
         sx={{
           position: "absolute",
-          bottom: SPACING["2xl"],
-          left: "50%",
-          transform: "translateX(-50%)",
-          animation: `${ANIMATIONS.float} 2s ease-in-out infinite`,
+          bottom: 0,
+          width: "100%",
+          py: SPACING.md,
+          textAlign: "center",
+          color: COLORS.neutral.gray300,
         }}
       >
-        <Typography sx={{ color: COLORS.primary.main, mb: SPACING.sm }}>Scroll to explore</Typography>
-        <Box
-          sx={{
-            width: "24px",
-            height: "40px",
-            border: `2px solid ${COLORS.primary.main}`,
-            borderRadius: "12px",
-            mx: "auto",
-            position: "relative",
-            "&::after": {
-              content: '""',
-              position: "absolute",
-              top: "8px",
-              left: "50%",
-              transform: "translateX(-50%)",
-              width: "4px",
-              height: "8px",
-              backgroundColor: COLORS.primary.main,
-              borderRadius: "2px",
-              animation: `${ANIMATIONS.float} 1.5s ease-in-out infinite`,
-            },
-          }}
-        />
-      </Box> */}
+        {/* Social Links */}
+        <Box sx={{ display: "flex", gap: SPACING.lg, justifyContent: "center", mb: SPACING.md }}>
+          {portfolioConfig.social.map((link) => (
+            <a
+              key={link.name}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                color: COLORS.primary.main,
+                textDecoration: "none",
+                transition: `color ${TRANSITIONS.base}`,
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = COLORS.primary.light)}
+              onMouseLeave={(e) => (e.currentTarget.style.color = COLORS.primary.main)}
+            >
+              {link.name}
+            </a>
+          ))}
+        </Box>
+        <Typography variant="body2">
+          {footer.copyright}
+        </Typography>
+      </Box>
     </Box>
   );
 }
