@@ -1,9 +1,11 @@
 
 import { Box, Button, TextField, Typography, Container } from "@mui/material";
 import type { ReactElement } from "react";
-import { COLORS, SPACING, SHADOWS, TRANSITIONS } from "../../constants/theme.constants";
+import { SPACING, SHADOWS, TRANSITIONS } from "../../constants/theme.constants";
+import { useThemeColors } from "../../hooks/useThemeColors";
 
 const Contact = (): ReactElement => {
+  const COLORS = useThemeColors();
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   };

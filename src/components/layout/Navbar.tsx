@@ -1,13 +1,19 @@
-import { AppBar, Toolbar, Typography, Button, Box, Drawer, List, ListItem, ListItemButton, ListItemText } from "@mui/material";
+import { AppBar, Toolbar, Typography, Button, Box, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText } from "@mui/material";
 import type { ReactElement } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 import { portfolioConfig } from "../../config/portfolio.config";
-import { COLORS, TRANSITIONS } from "../../constants/theme.constants";
+import { TRANSITIONS } from "../../constants/theme.constants";
+import { useTheme } from "../../context/ThemeContext";
+import { useThemeColors } from "../../hooks/useThemeColors";
 import BurgerMenu from "../../assets/burger-menu-svgrepo-com.svg";
 
 function Navbar(): ReactElement {
   const navigate = useNavigate();
+  const { mode, toggleTheme } = useTheme();
+  const COLORS = useThemeColors();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleNavClick = (path: string) => {
@@ -36,7 +42,7 @@ function Navbar(): ReactElement {
         </Typography>
 
         {/* Desktop Navigation */}
-        <Box sx={{ display: { xs: "none", md: "flex" }, gap: 1 }}>
+        <Box sx={{ display: { xs: "none", md: "flex" }, gap: 1, alignItems: "center" }}>
           {portfolioConfig.navigation.map((item) => (
             <Button
               key={item.path}
@@ -56,6 +62,26 @@ function Navbar(): ReactElement {
               {item.label}
             </Button>
           ))}
+          
+          {/* Theme Toggle Button */}
+          <IconButton
+            onClick={toggleTheme}
+            size="large"
+            sx={{
+              color: COLORS.primary.main,
+              transition: `all ${TRANSITIONS.base}`,
+              "& svg": {
+                fontSize: "1.5rem",
+              },
+              "&:hover": {
+                backgroundColor: `${COLORS.primary.main}20`,
+                transform: "scale(1.1) rotate(180deg)",
+                filter: `drop-shadow(0 0 8px ${COLORS.primary.main})`,
+              },
+            }}
+          >
+            {mode === "dark" ? <LightModeIcon /> : <DarkModeIcon />}
+          </IconButton>
         </Box>
 
         {/* Mobile Menu Button */}
@@ -119,11 +145,11 @@ function Navbar(): ReactElement {
         >
           <List>
             {portfolioConfig.navigation.map((item) => (
-              <ListItem key={item.path} disablePadding>
+              <ListItem key={item.path} color="inherit" disablePadding>
                 <ListItemButton
                   onClick={() => handleNavClick(item.path)}
                   sx={{
-                    color: COLORS.neutral.white,
+                    color: "inherit",
                     transition: `all ${TRANSITIONS.base}`,
                     "&:hover": {
                       backgroundColor: `${COLORS.primary.main}20`,
@@ -135,6 +161,26 @@ function Navbar(): ReactElement {
                 </ListItemButton>
               </ListItem>
             ))}
+            
+            {/* Mobile Theme Toggle */}
+            <ListItem disablePadding>
+              <ListItemButton
+                onClick={toggleTheme}
+                sx={{
+                  color: "inherit",
+                  transition: `all ${TRANSITIONS.base}`,
+                  "&:hover": {
+                    backgroundColor: `${COLORS.primary.main}20`,
+                    color: COLORS.primary.main,
+                  },
+                }}
+              >
+                <ListItemText 
+                  primary={mode === "dark" ? "Light Mode" : "Dark Mode"} 
+                />
+                {mode === "dark" ? <LightModeIcon sx={{ ml: 1 }} /> : <DarkModeIcon sx={{ ml: 1 }} />}
+              </ListItemButton>
+            </ListItem>
           </List>
         </Box>
       </Drawer>

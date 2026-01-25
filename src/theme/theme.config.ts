@@ -5,45 +5,49 @@
  */
 
 import { createTheme } from "@mui/material/styles";
-import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS, SHADOWS, TRANSITIONS } from "../constants/theme.constants";
+import { TYPOGRAPHY, SPACING, BORDER_RADIUS, SHADOWS, TRANSITIONS } from "../constants/theme.constants";
+import { LIGHT_COLORS, DARK_COLORS } from "../constants/colors";
 
-const theme = createTheme({
-  palette: {
-    mode: "dark",
-    primary: {
-      main: COLORS.primary.main,
-      dark: COLORS.primary.dark,
-      light: COLORS.primary.light,
-      contrastText: COLORS.neutral.white,
+export function createThemeConfig(mode: "light" | "dark") {
+  const COLORS = mode === "light" ? LIGHT_COLORS : DARK_COLORS;
+
+  const theme = createTheme({
+    palette: {
+      mode: mode,
+      primary: {
+        main: COLORS.primary.main,
+        dark: COLORS.primary.dark,
+        light: COLORS.primary.light,
+        contrastText: mode === "light" ? COLORS.neutral.black : COLORS.neutral.white,
+      },
+      secondary: {
+        main: COLORS.secondary.main,
+        dark: COLORS.secondary.dark,
+        light: COLORS.secondary.light,
+        contrastText: mode === "light" ? COLORS.neutral.black : COLORS.neutral.white,
+      },
+      background: {
+        default: COLORS.background.primary,
+        paper: COLORS.background.secondary,
+      },
+      text: {
+        primary: mode === "light" ? COLORS.neutral.black : COLORS.neutral.white,
+        secondary: mode === "light" ? COLORS.neutral.gray600 : COLORS.neutral.gray300,
+      },
+      divider: mode === "light" ? COLORS.neutral.gray300 : COLORS.neutral.gray700,
+      success: {
+        main: COLORS.status.success,
+      },
+      warning: {
+        main: COLORS.status.warning,
+      },
+      error: {
+        main: COLORS.status.error,
+      },
+      info: {
+        main: COLORS.status.info,
+      },
     },
-    secondary: {
-      main: COLORS.secondary.main,
-      dark: COLORS.secondary.dark,
-      light: COLORS.secondary.light,
-      contrastText: COLORS.neutral.white,
-    },
-    background: {
-      default: COLORS.background.primary,
-      paper: COLORS.background.secondary,
-    },
-    text: {
-      primary: COLORS.neutral.white,
-      secondary: COLORS.neutral.gray300,
-    },
-    divider: COLORS.neutral.gray700,
-    success: {
-      main: COLORS.status.success,
-    },
-    warning: {
-      main: COLORS.status.warning,
-    },
-    error: {
-      main: COLORS.status.error,
-    },
-    info: {
-      main: COLORS.status.info,
-    },
-  },
 
   typography: {
     fontFamily: TYPOGRAPHY.fontFamily.primary,
@@ -198,6 +202,9 @@ const theme = createTheme({
       },
     },
   },
-});
+  });
 
-export default theme;
+  return theme;
+}
+
+export default createThemeConfig("dark");

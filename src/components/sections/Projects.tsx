@@ -1,10 +1,12 @@
 import { Box, Typography, Container } from "@mui/material";
 import type { ReactElement } from "react";
 import { portfolioConfig } from "../../config/portfolio.config";
-import { COLORS, SPACING, SHADOWS } from "../../constants/theme.constants";
+import { SPACING, SHADOWS } from "../../constants/theme.constants";
+import { useThemeColors } from "../../hooks/useThemeColors";
 
 function Projects(): ReactElement {
   const { projects } = portfolioConfig;
+  const COLORS = useThemeColors();
   const featuredProjects = projects.filter((p) => p.featured);
 
   return (

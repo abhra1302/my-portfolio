@@ -1,10 +1,12 @@
 import { Box, Typography, Container } from "@mui/material";
 import type { ReactElement } from "react";
 import { portfolioConfig } from "../../config/portfolio.config";
-import { COLORS, SPACING, SHADOWS, TRANSITIONS, ANIMATIONS } from "../../constants/theme.constants";
+import { SPACING, SHADOWS, TRANSITIONS, ANIMATIONS } from "../../constants/theme.constants";
+import { useThemeColors } from "../../hooks/useThemeColors";
 
 function About(): ReactElement {
   const { about } = portfolioConfig;
+  const COLORS = useThemeColors();
 
   return (
     <Box

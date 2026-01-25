@@ -5,99 +5,103 @@
  */
 
 import { GlobalStyles as MuiGlobalStyles } from "@mui/material";
-import { COLORS, ANIMATIONS, SHADOWS } from "../constants/theme.constants";
+import { ANIMATIONS, SHADOWS } from "../constants/theme.constants";
+import { LIGHT_COLORS, DARK_COLORS } from "../constants/colors";
 
-const globalStyles = (
-  <MuiGlobalStyles
-    styles={{
-      // Reset and base styles
-      "*": {
-        margin: 0,
-        padding: 0,
-        boxSizing: "border-box",
-      },
+export function createGlobalStyles(mode: "light" | "dark") {
+  const COLORS = mode === "light" ? LIGHT_COLORS : DARK_COLORS;
 
-      html: {
-        scrollBehavior: "smooth",
-      },
-
-      body: {
-        backgroundColor: COLORS.background.primary,
-        color: COLORS.neutral.white,
-        fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
-      },
-
-      "#root": {
-        minHeight: "100vh",
-        display: "flex",
-        flexDirection: "column",
-      },
-
-      // Main content area
-      main: {
-        flex: 1,
-        overflowY: "auto",
-      },
-
-      // Scrollbar Styling
-      "::-webkit-scrollbar": {
-        width: "8px",
-        height: "8px",
-      },
-
-      "::-webkit-scrollbar-track": {
-        background: COLORS.background.secondary,
-      },
-
-      "::-webkit-scrollbar-thumb": {
-        background: COLORS.primary.main,
-        borderRadius: "4px",
-        "&:hover": {
-          background: COLORS.primary.light,
+  return (
+    <MuiGlobalStyles
+      styles={{
+        // Reset and base styles
+        "*": {
+          margin: 0,
+          padding: 0,
+          boxSizing: "border-box",
         },
-      },
 
-      // Selection
-      "::selection": {
-        backgroundColor: COLORS.primary.main,
-        color: COLORS.background.primary,
-      },
+        html: {
+          scrollBehavior: "smooth",
+        },
 
-      // Animations
-      "@keyframes glow": {
-        "0%": {
-          textShadow: `0 0 10px ${COLORS.primary.main}, 0 0 20px ${COLORS.primary.main}`,
+        body: {
+          backgroundColor: COLORS.background.primary,
+          color: mode === "light" ? COLORS.neutral.black : COLORS.neutral.white,
+          fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
         },
-        "100%": {
-          textShadow: `0 0 20px ${COLORS.primary.main}, 0 0 40px ${COLORS.primary.main}`,
-        },
-      },
 
-      "@keyframes glowPulse": {
-        "0%, 100%": {
-          opacity: 0.5,
-          boxShadow: SHADOWS.glow,
+        "#root": {
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
         },
-        "50%": {
-          opacity: 1,
-          boxShadow: SHADOWS.glowLarge,
-        },
-      },
 
-      "@keyframes float": {
-        "0%, 100%": {
-          transform: "translateY(0px)",
+        // Main content area
+        main: {
+          flex: 1,
+          overflowY: "auto",
         },
-        "50%": {
-          transform: "translateY(-20px)",
-        },
-      },
 
-      "@keyframes slideUp": {
-        "0%": {
-          opacity: 0,
-          transform: "translateY(20px)",
+        // Scrollbar Styling
+        "::-webkit-scrollbar": {
+          width: "8px",
+          height: "8px",
         },
+
+        "::-webkit-scrollbar-track": {
+          background: COLORS.background.secondary,
+        },
+
+        "::-webkit-scrollbar-thumb": {
+          background: COLORS.primary.main,
+          borderRadius: "4px",
+          "&:hover": {
+            background: COLORS.primary.light,
+          },
+        },
+
+        // Selection
+        "::selection": {
+          backgroundColor: COLORS.primary.main,
+          color: mode === "light" ? COLORS.neutral.white : COLORS.neutral.black,
+        },
+
+        // Animations
+        "@keyframes glow": {
+          "0%": {
+            textShadow: `0 0 10px ${COLORS.primary.main}, 0 0 20px ${COLORS.primary.main}`,
+          },
+          "100%": {
+            textShadow: `0 0 20px ${COLORS.primary.main}, 0 0 40px ${COLORS.primary.main}`,
+          },
+        },
+
+        "@keyframes glowPulse": {
+          "0%, 100%": {
+            opacity: 0.5,
+            boxShadow: SHADOWS.glow,
+          },
+          "50%": {
+            opacity: 1,
+            boxShadow: SHADOWS.glowLarge,
+          },
+        },
+
+        "@keyframes float": {
+          "0%, 100%": {
+            transform: "translateY(0px)",
+          },
+          "50%": {
+            transform: "translateY(-20px)",
+          },
+        },
+
+        "@keyframes slideUp": {
+          "0%": {
+            opacity: 0,
+            transform: "translateY(20px)",
+          },
         "100%": {
           opacity: 1,
           transform: "translateY(0)",
@@ -204,6 +208,7 @@ const globalStyles = (
       },
     }}
   />
-);
+  );
+}
 
-export default globalStyles;
+export default createGlobalStyles("dark");

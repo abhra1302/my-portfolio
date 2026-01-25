@@ -2,11 +2,13 @@ import { Box, Typography, Button } from "@mui/material";
 import type { ReactElement } from "react";
 import { useNavigate } from "react-router-dom";
 import { portfolioConfig } from "../../config/portfolio.config";
-import { COLORS, ANIMATIONS, SPACING, SHADOWS, TRANSITIONS } from "../../constants/theme.constants";
+import { ANIMATIONS, SPACING, SHADOWS, TRANSITIONS } from "../../constants/theme.constants";
+import { useThemeColors } from "../../hooks/useThemeColors";
 
 function Hero(): ReactElement {
   const navigate = useNavigate();
   const { hero, footer } = portfolioConfig;
+  const COLORS = useThemeColors();
 
   return (
     <Box

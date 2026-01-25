@@ -1,11 +1,13 @@
 
 import { Box, Typography } from "@mui/material";
 import type { ReactElement } from "react";
-import { COLORS, SPACING, SHADOWS, TRANSITIONS } from "../../constants/theme.constants";
+import { SPACING, SHADOWS, TRANSITIONS } from "../../constants/theme.constants";
+import { useThemeColors } from "../../hooks/useThemeColors";
 
 const skills = ["Java", "Spring Boot", "JavaScript", "TypeScript", "Node.js", "NestJS", "React", "Docker", "Kubernetes", "AWS"];
 
 const Skills = (): ReactElement => {
+  const COLORS = useThemeColors();
   return (
     <Box
       sx={{
